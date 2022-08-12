@@ -20,14 +20,15 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hi my name is {this.state.name}, I live in {this.state.address}
+            Hi my name is {this.state.name.firstName} {this.state.name.lastName}, I live in {this.state.address}
           </p>
           <button onClick={() => {
             this.setState({
               name: {
-                firstName: "God",
-                lastName: ""
-              }
+                firstName: "Emily",
+                lastName: "Kande"
+              },
+              address: "Heaven"
             })
           }
           }
