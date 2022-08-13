@@ -11,6 +11,7 @@ class App extends Component {
     }
   }
 
+  // Parse api data into state
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users/')
       .then((response) => response.json())
@@ -21,25 +22,34 @@ class App extends Component {
       })
   }
 
+  // Search functionality
+  onSearchChange = (event) => {
+    const searchInput = event.target.value.toLocaleLowerCase()
+
+    return this.setState(() => { return { searchInput } })
+  }
+
+
   render() {
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(this.state.searchInput)
+    const { monsters, searchInput } = this.state
+    const { onSearchChange } = this
+
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchInput)
     })
 
     return (
       <div className="App">
+
+        {/* Search bar */}
         <input
           className="search-bar"
           type="search"
           placeholder="search monster(s)"
-          onChange={(event) => {
-            const searchInput = event.target.value.toLocaleLowerCase()
-
-            return this.setState({ searchInput })
-          }
-          }
+          onChange={onSearchChange}
         />
 
+        {/* Monster output */}
         {
           filteredMonsters.map((monster) => {
             return (
