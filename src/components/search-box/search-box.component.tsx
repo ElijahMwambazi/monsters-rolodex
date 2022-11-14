@@ -1,8 +1,21 @@
 // import { Component } from "react";
+import { ChangeEvent } from "react";
 import "./search-box.styles.css";
 
-// APP FUNCTIONAL COMPONENT
-const SearchBox = ({ className, placeholder, onChangeHandler }) => (
+type TSearchBoxPros = {
+  className: string;
+  placeholder?: string;
+  onChangeHandler: (
+    event: ChangeEvent<HTMLInputElement>
+  ) => void;
+};
+
+// ! APP FUNCTIONAL COMPONENT
+const SearchBox = ({
+  className,
+  placeholder,
+  onChangeHandler,
+}: TSearchBoxPros): JSX.Element => (
   <input
     className={`search-box ${className}`}
     type="search"
@@ -11,7 +24,7 @@ const SearchBox = ({ className, placeholder, onChangeHandler }) => (
   />
 );
 
-// APP CLASS COMPONENT
+// ! APP CLASS COMPONENT
 // class SearchBox extends Component {
 //   render() {
 //     const { props } = this;
