@@ -1,8 +1,14 @@
-import { Component } from "react";
+// import { Component } from "react";
+import { TMonster } from "../../App";
+
 import "./card.styles.css";
 
+type TCardProps = {
+  monster: TMonster;
+};
+
 // APP FUNCTIONAL COMPONENT
-const Card = ({ monster }) => {
+const Card = ({ monster }: TCardProps) => {
   const { name, email, id } = monster;
 
   return (
